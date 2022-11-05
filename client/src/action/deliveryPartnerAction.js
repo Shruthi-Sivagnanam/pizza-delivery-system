@@ -30,7 +30,10 @@ export const deliveryPartnerLoginAction = (user) => async (dispatch) => {
 export const deliveryPartnerSingle = (username) => async (dispatch) => {
   dispatch({ type: "DELIVERY_PARTNER_SINGLE_REQUEST" });
   try {
-    const response = await axios.post("/api/deliverypartner/getdp", username);
+    console.log(username);
+    const response = await axios.post("/api/deliverypartner/getdp", {
+      username,
+    });
     dispatch({
       type: "DELIVERY_PARTNER_SINGLE_SUCCESS",
       payload: response.data,

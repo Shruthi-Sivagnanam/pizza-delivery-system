@@ -1,7 +1,9 @@
 import React from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 export default function OrderDes(props) {
+  const { dp } = useSelector((state) => state.deliveryPartnerSingleReducer);
   return (
     <div>
       <Modal
@@ -53,7 +55,9 @@ export default function OrderDes(props) {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <h1>Delivery person Contact: {props.order.dp} </h1>
+          <h1>
+            Delivery person Contact:{props.order.dp} {dp}
+          </h1>
         </Modal.Footer>
       </Modal>
     </div>

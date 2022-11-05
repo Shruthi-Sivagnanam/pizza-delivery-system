@@ -67,7 +67,9 @@ const initialState = {
   userLoginReducer: {
     user: user,
   },
-  deliveryPartnerLoginReducers: {},
+  deliveryPartnerLoginReducers: {
+    dp: deliveryPartner,
+  },
 };
 
 const composeEnchansers = composeWithDevTools({});

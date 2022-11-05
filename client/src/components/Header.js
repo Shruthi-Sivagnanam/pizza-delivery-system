@@ -53,7 +53,6 @@ function Header() {
                 <Nav.Link href="/cart">
                   Cart <span class="cart">{cartstate.cartItem.length}</span>
                 </Nav.Link>
-                <Nav.Link href="/delivery">DP Login</Nav.Link>
               </>
             )}
             {user && user.isAdmin && (

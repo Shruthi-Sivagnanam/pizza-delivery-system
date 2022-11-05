@@ -13,7 +13,6 @@ import AddNewMenu from "./screens/admin/AddNewMenu";
 import OrderList from "./screens/admin/OrderList";
 import Logout from "./screens/auth/Logout";
 import RegToLogin from "./screens/auth/RegToLogin";
-import DeliveryPage from "./screens/delivery/DeliveryPage";
 import AddDeliveryPartner from "./screens/admin/AddDeliveryPartner";
 import OrderPage from "./screens/delivery/OrderPage";
 
@@ -43,8 +42,6 @@ function App() {
             exact
             element={<AddDeliveryPartner />}
           />
-
-          <Route path="/delivery" exact element={<DeliveryPage />} />
           <Route path="/delivery/landingpage" element={<OrderPage />} />
         </Routes>
       </BrowserRouter>

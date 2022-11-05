@@ -28,9 +28,6 @@ export default function CartScreen() {
       <div className="row justify-content-center">
         <div className="col-md-6" data-aos="fade-down">
           <h2 style={{ fontSize: "35px" }}>My Cart</h2>
-          <Button variant="danger" style={{ margin: "10px" }} href="/">
-            Back to Menu
-          </Button>
           {empty && (
             <Success
               heading="Removed successfully!"
@@ -56,6 +53,10 @@ export default function CartScreen() {
               style={{ width: "100px", height: "100px" }}
             />
           )}
+          <br />
+          <Button variant="danger" style={{ margin: "10px" }} href="/">
+            Back to Menu
+          </Button>
           {cartItem.length > 0 ? (
             cartItem.map((items) => (
               <div className="flex-container m-1">

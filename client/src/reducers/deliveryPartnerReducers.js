@@ -55,5 +55,7 @@ export const deliveryPartnerSingleReducer = (state = {}, action) => {
         loading: false,
         error: action.payload,
       };
+    default:
+      return state;
   }
 };

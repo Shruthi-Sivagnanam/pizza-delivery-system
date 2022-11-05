@@ -48,6 +48,21 @@ export const orderUpdateAction = (id, dp) => async (dispatch) => {
   try {
     const response = await axios.post("/api/order/updateorder", { id, dp });
     console.log(response);
+    alert("Ordered Updated! Please refresh the page");
+    dispatch({ type: "ORDER_UPDATE_SUCCESS" });
+  } catch {
+    dispatch({ type: "ORDER_UPDATE_FAILED" });
+  }
+};
+
+export const orderUpdateStatusAction = (id, status) => async (dispatch) => {
+  dispatch({ type: "ORDER_UPDATE_REQUEST" });
+  try {
+    const response = await axios.post("/api/order/updatestatus", {
+      id,
+      status,
+    });
+    console.log(response);
     alert("Ordered delivered sucessfully! Please refresh the page");
     dispatch({ type: "ORDER_UPDATE_SUCCESS" });
   } catch {

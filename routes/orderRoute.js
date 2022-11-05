@@ -109,7 +109,7 @@ router.post("/placeorder", async (req, res) => {
 router.post("/userorders", (req, res) => {
   const { userid } = req.body;
   Order.find({ userid: userid })
-    .sort({ updatedAt: -1 })
+    .sort({ createdAt: -1 })
     .then((result) => {
       res.send(result);
     })
@@ -120,6 +120,7 @@ router.post("/userorders", (req, res) => {
 
 router.get("/allorders", (req, res) => {
   Order.find()
+    .sort({ createdAt: -1 })
     .then((result) => {
       res.send(result);
     })
@@ -133,11 +134,22 @@ router.post("/updateorder", (req, res) => {
   console.log(dp);
   Order.findByIdAndUpdate(id, { dp: dp })
     .then((result) => {
-      console.log(result);
+      //console.log(result);
       res.send(result);
     })
     .catch((error) => {
       res.status(400).json({ message: "Error" });
+    });
+});
+
+router.post("/updatestatus", (req, res) => {
+  const { id, status } = req.body;
+  Order.findByIdAndUpdate(id, { isDelivered: status })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((error) => {
+      res.status(400).json({ message: error });
     });
 });
 

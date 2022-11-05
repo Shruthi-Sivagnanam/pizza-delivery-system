@@ -36,13 +36,14 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/getdp", (req, res) => {
-  const { username } = req.body.dp;
-  DeliveryPartner.find({ username: username })
+  const { username } = req.body;
+  //console.log(username);
+  DeliveryPartner.find({ username })
     .then((result) => {
-      res.send(result);
+      res.send(result[0].phonenumber);
     })
     .catch((error) => {
-      res.status(404).json({ message: error });
+      console.log(error);
     });
 });
 
