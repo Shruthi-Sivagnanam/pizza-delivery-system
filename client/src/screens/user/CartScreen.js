@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,15 +11,22 @@ import Success from "../../components/Success";
 import Error from "../../components/Error";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CartScreen() {
   AOS.init();
   const cartstate = useSelector((state) => state.addToCartReducers);
   const { cartItem, empty } = cartstate;
+  const { user } = useSelector((state) => state.userLoginReducer);
   const dispatch = useDispatch();
   var total = cartItem.reduce((x, item) => x + item.cartItemPrice, 0);
   const payment = useSelector((state) => state.orderReducers);
   const { success, error, loading } = payment;
+  const navigate = useNavigate();
+  useEffect(() => {
+    const admin = user !== null ? user.isAdmin : false;
+    if (admin) navigate("/");
+  }, [user, navigate]);
   function emptycart() {
     dispatch(emptyTheCart());
   }
