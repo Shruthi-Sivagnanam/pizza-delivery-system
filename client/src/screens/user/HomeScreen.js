@@ -39,15 +39,13 @@ export default function HomeScreen() {
           />
         )}
         {pizzas &&
-          pizzas.map((pizza) => {
-            return (
-              <div className="col-md-4" key={pizza._id}>
-                <div>
-                  <Pizzas pizza={pizza} />
-                </div>
+          pizzas.map((pizza) => (
+            <div className="col-md-4" key={pizza._id}>
+              <div>
+                <Pizzas pizza={pizza} />
               </div>
-            );
-          })}
+            </div>
+          ))}
         <hr className="heading-line" />
         {others &&
           others.map((item) => (
