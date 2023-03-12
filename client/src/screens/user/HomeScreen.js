@@ -46,6 +46,15 @@ export default function HomeScreen() {
               </div>
             </div>
           ))}
+        <hr className="heading-line" />
+        {others &&
+          others.map((item) => (
+            <div className="col-md-4" key={item._id}>
+              <div>
+                <Pizzas pizza={item} />
+              </div>
+            </div>
+          ))}
       </div>
       <CartIcon />
     </div>
